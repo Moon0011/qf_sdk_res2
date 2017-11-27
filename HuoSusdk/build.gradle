@@ -1,0 +1,69 @@
+apply plugin: 'com.android.library'
+android {
+    compileSdkVersion 24
+    buildToolsVersion '25.0.0'
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 3
+        versionName "7.1"
+        multiDexEnabled true
+    }
+    buildTypes {
+        libRelease {
+            minifyEnabled true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+    }
+    //移除lint检测的error
+    lintOptions {
+        abortOnError false
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+    /**
+     * 拷贝jar到HuoSdkLib的libs目录下
+     */
+//    task copyJar(type: Copy, dependsOn: "assembleLibRelease") {
+//        from("build/intermediates/bundles/libRelease/classes.jar")
+//        into("../HuoSdkLib/libs")
+//        rename("classes.jar", "HuoSusdk-release-" + defaultConfig.versionName + ".jar")
+//    }
+    def SDK_BASENAME = "HuoSusdk-release-";
+    def sdkDestinationPath = "../HuoSdkLib/libs/";
+    def zipFile = file('build/intermediates/bundles/libRelease/classes.jar')
+    //删除文件
+    task deleteBuild(type: Delete) {
+        delete sdkDestinationPath + SDK_BASENAME + defaultConfig.versionName + ".jar"
+    }
+    //往jar中添加assets后输出到指定的目录
+    task copyJar(type: Jar) {
+        from zipTree(zipFile)
+        from fileTree(dir: 'src/main', includes: ['assets/**']) // 打包assets目录下的所有文件
+        baseName = SDK_BASENAME + defaultConfig.versionName
+        destinationDir = file(sdkDestinationPath)
+    }
+    //添加依赖
+    copyJar.dependsOn(deleteBuild, "assembleLibRelease")
+
+}
+dependencies {
+    provided fileTree(include: ['*.jar'], dir: 'libs')
+    compile files('libs/alipaySdk-20170309.jar')
+    compile files('libs/gson-2.7.jar')
+    compile files('libs/ipaynow_base_v2.0.1.jar')
+    compile files('libs/ipaynow_wechatwp_v2.0.0.jar')
+    compile files('libs/okvolly_1.1.5.jar')
+}
+
+

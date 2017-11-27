@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/huo_sdk_login_bg_translucence_black"
+    >
+    <com.game.sdk.view.HuoFastLoginView
+        android:id="@+id/huo_sdk_fastLoginView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        >
+    </com.game.sdk.view.HuoFastLoginView>
+
+    <com.game.sdk.view.HuoLoginViewNew
+        android:id="@+id/huo_sdk_loginView_new"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        >
+    </com.game.sdk.view.HuoLoginViewNew>
+
+    <com.game.sdk.view.HuoRegisterViewNew
+        android:id="@+id/huo_sdk_registerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        >
+    </com.game.sdk.view.HuoRegisterViewNew>
+    <com.game.sdk.view.HuoUserNameRegisterViewNew
+        android:id="@+id/huo_sdk_userNameRegisterView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        >
+    </com.game.sdk.view.HuoUserNameRegisterViewNew>
+    <com.game.sdk.view.SelectAccountView
+        android:id="@+id/huo_sdk_selectAccountView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone">
+
+    </com.game.sdk.view.SelectAccountView>
+</RelativeLayout>

@@ -1,0 +1,84 @@
+apply plugin: 'com.android.application'
+apply from: "../HuoSdkLib/config/productFlavorsConfig.gradle"
+android {
+    compileSdkVersion 24
+    buildToolsVersion '25.0.0'
+
+    defaultConfig {
+        applicationId "com.etsdk.sdkdemo"
+        minSdkVersion 15
+        targetSdkVersion 16
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile("proguard-android.txt"),  "proguard-rules.pro"
+            // 批量打包
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        //输出apk名称为：渠道名_版本名_时间.apk
+                        def fileName = "${variant.productFlavors[0].name}_v${defaultConfig.versionName}_${defaultConfig.versionCode}_${releaseTime()}.apk"
+                        String outputsPath=outputFile.parent.substring(0,outputFile.parent.indexOf("apk"));
+                        //outputs+渠道名 组成的目录
+                        File newOutfileDir=new File(outputsPath,"${variant.productFlavors[0].name}");
+                        if(newOutfileDir.exists()){
+                            newOutfileDir.delete();
+                        }
+                        newOutfileDir.mkdirs();
+                        //apk位置 outputs/渠道名/xxx.apk
+                        output.outputFile = new File(newOutfileDir, fileName);
+                        String channelName="${variant.productFlavors[0].name}";
+
+                    }
+                }
+            }
+        }
+        debug{
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+    }
+    sourceSets{
+        main{
+            jniLibs.srcDirs=['libs']
+        }
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+    //签名信息
+    signingConfigs {
+        debug {
+            storeFile file("key/huoapp_key.jks")
+            storePassword "huoapp"
+            keyAlias "huoshu"
+            keyPassword "huoapp"
+            v2SigningEnabled false
+        }
+    }
+    //移除lint检测的error
+    lintOptions {
+        abortOnError false
+    }
+}
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+    compile project(':HuoSusdk')
+}

@@ -1,0 +1,14 @@
+android {
+	 productFlavors {
+	 	 "portrait_SDK" {
+	 	 	 applicationId "com.game.sdk.qingfengdeyi210"
+	 	 	 versionCode 1
+	 	 	 resValue( "string", "app_name", "清风得意demo竖屏版" )
+	 	 }
+	 	 "landscape_SDK" {
+	 	 	 applicationId "com.game.sdk.qingfengdeyi210landscape"
+	 	 	 versionCode 1
+	 	 	 resValue( "string", "app_name", "清风得意demo横屏版" )
+	 	 }
+	 }
+}
