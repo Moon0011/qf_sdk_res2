@@ -127,7 +127,6 @@ public class DialogUtil {
      */
     public static void showNoticeDialog(final Context context, Notice notice) {
 
-        notice = new Notice("游戏公告","游戏公告游戏公告游戏公告游戏公告游戏公告游戏公告游戏公告","2017年11月27日16:02:00");
         if (notice == null || TextUtils.isEmpty(notice.getContent())) return;
 
         Log.e("notice", " notice.title:" + notice.getTitle() + " | notice.setContent:" + notice.getContent());
