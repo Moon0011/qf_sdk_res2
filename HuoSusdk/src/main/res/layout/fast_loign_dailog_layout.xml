@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:background="#50000000"
+    android:gravity="center">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="70dp">
+
+        <ImageView
+            android:id="@+id/huo_sdk_iv_fastLoading"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/huo_sdk_xs_loading"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/tv_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="sdfsdfsdf"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="26dip"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="14dp"
+            android:layout_toRightOf="@+id/huo_sdk_iv_fastLoading"
+            android:gravity="center"
+            android:text="正在登录"
+            android:textColor="@android:color/white"
+            android:textSize="15dip" />
+
+    </RelativeLayout>
+
+</LinearLayout>

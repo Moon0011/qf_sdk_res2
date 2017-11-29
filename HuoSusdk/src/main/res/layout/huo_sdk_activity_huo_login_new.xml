@@ -4,14 +4,14 @@
     android:layout_height="match_parent"
     android:background="@color/huo_sdk_login_bg_translucence_black"
     >
-    <com.game.sdk.view.HuoFastLoginView
-        android:id="@+id/huo_sdk_fastLoginView"
+    <com.game.sdk.view.HuoFastLoginViewNew
+        android:id="@+id/huo_sdk_fastLoginView_new"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:visibility="gone"
         >
-    </com.game.sdk.view.HuoFastLoginView>
+    </com.game.sdk.view.HuoFastLoginViewNew>
 
     <com.game.sdk.view.HuoLoginViewNew
         android:id="@+id/huo_sdk_loginView_new"

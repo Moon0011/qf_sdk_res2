@@ -32,6 +32,7 @@ import com.game.sdk.util.DialogUtil;
 import com.game.sdk.util.GsonUtil;
 import com.game.sdk.util.MResource;
 import com.game.sdk.view.HuoFastLoginView;
+import com.game.sdk.view.HuoFastLoginViewNew;
 import com.game.sdk.view.HuoLoginViewNew;
 import com.game.sdk.view.HuoRegisterViewNew;
 import com.game.sdk.view.HuoUserNameRegisterViewNew;
@@ -50,7 +51,7 @@ public class HuoLoginActivity extends BaseActivity {
     private final static int CODE_LOGIN_CANCEL=-2;//用户取消登陆
     HuoLoginViewNew huoLoginView;
     HuoRegisterViewNew huoRegisterView;
-    private HuoFastLoginView huoFastLoginView;
+    private HuoFastLoginViewNew huoFastLoginView;
     private HuoUserNameRegisterViewNew huoUserNameRegisterView;
     private ViewStackManager viewStackManager;
     private boolean callBacked;//是否已经回调过了
@@ -69,7 +70,7 @@ public class HuoLoginActivity extends BaseActivity {
         viewStackManager = ViewStackManager.getInstance(this);
         int type = getIntent().getIntExtra("type", 1);
         huoLoginView = (HuoLoginViewNew) findViewById(MResource.getIdByName(this, "R.id.huo_sdk_loginView_new"));
-        huoFastLoginView = (HuoFastLoginView) findViewById(MResource.getIdByName(this, "R.id.huo_sdk_fastLoginView"));
+        huoFastLoginView = (HuoFastLoginViewNew) findViewById(MResource.getIdByName(this, "R.id.huo_sdk_fastLoginView_new"));
         huoRegisterView = (HuoRegisterViewNew) findViewById(MResource.getIdByName(this, "R.id.huo_sdk_registerView"));
         huoUserNameRegisterView = (HuoUserNameRegisterViewNew) findViewById(MResource.getIdByName(this, "R.id.huo_sdk_userNameRegisterView"));
         huoSdkSelectAccountView = (SelectAccountView) findViewById(MResource.getIdByName(this, "R.id.huo_sdk_selectAccountView"));
@@ -118,7 +119,7 @@ public class HuoLoginActivity extends BaseActivity {
     }
 
 
-    public HuoFastLoginView getHuoFastLoginView() {
+    public HuoFastLoginViewNew getHuoFastLoginView() {
         return huoFastLoginView;
     }
 
