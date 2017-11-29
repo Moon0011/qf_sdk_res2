@@ -15,7 +15,6 @@
         android:layout_height="45dip"
         android:layout_gravity="center"
         android:layout_marginTop="5dp"
-        android:background="@drawable/huo_sdk_sdk_spalns_login"
         android:visibility="visible">
 
         <ImageView
@@ -79,7 +78,6 @@
         android:id="@+id/huo_sdk_tv_fastChangeCount"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@drawable/huo_sdk_sdk_spalns_login"
         android:gravity="center"
         android:text="切换账号"
         android:textColor="@android:color/white"
