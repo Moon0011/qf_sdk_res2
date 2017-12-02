@@ -64,6 +64,9 @@ dependencies {
     compile files('libs/ipaynow_base_v2.0.1.jar')
     compile files('libs/ipaynow_wechatwp_v2.0.0.jar')
     compile files('libs/okvolly_1.1.5.jar')
+    compile 'com.yolanda.nohttp:nohttp:1.1.0'
+    //noinspection GradleCompatible
+    compile 'com.android.support:appcompat-v7:26.+'
 }
 
 
